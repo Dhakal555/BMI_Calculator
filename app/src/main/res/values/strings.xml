@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BMICalculator</string>
+
+    <string name="ow">Overweight</string>
+    <string name="n">Healthy / Normal Weight</string>
+    <string name="uw">Underweight</string>
+</resources>
