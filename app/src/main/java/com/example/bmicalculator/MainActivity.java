@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText txtWeight, txtHeight;
@@ -45,9 +47,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void calculateBMI(){
+        DecimalFormat df = new DecimalFormat("#.00");
+
         String txtWeightstr = txtWeight.getText().toString();
         String txtHeightstr = txtHeight.getText().toString();
 
@@ -58,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
             float resBMI = txtWeightflo / (txtHeightflo*txtHeightflo);
             txtInfo.setText("");
-            ShowBMI(resBMI);
+
+            ShowBMI(Float.parseFloat(df.format(resBMI)));
         }
 
     }
@@ -83,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void Validate(){
         // validation for empty fields
-        String txtWeightstr = txtWeight.getText().toString();
-        String txtHeightstr = txtHeight.getText().toString();
+        String txtWeightstr = txtWeight.getText().toString().trim();
+        String txtHeightstr = txtHeight.getText().toString().trim();
 
         if(txtHeightstr.matches("") || txtWeightstr.matches("")){
             Toast.makeText(this, "Empty Fields", Toast.LENGTH_SHORT).show();
